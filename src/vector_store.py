@@ -19,6 +19,16 @@ class PolicyVectorStore:
             }
         )
 
+        # ======================================================
+        # DEBUG
+        # ======================================================
+
+        print("=" * 60)
+        print("Chroma Database Loaded")
+        print(f"Collection Name : {self.collection.name}")
+        print(f"Total Chunks    : {self.collection.count()}")
+        print("=" * 60)
+
     def add_chunks(
         self,
         chunks,
@@ -52,11 +62,16 @@ class PolicyVectorStore:
             metadatas=metadatas
         )
 
+        print(f"Added {len(chunks)} chunks to ChromaDB.")
+
     def search(
         self,
         query_embedding,
         n_results: int = 5
     ):
+
+        print("\nSearching ChromaDB...")
+        print(f"Current Collection Count: {self.collection.count()}")
 
         results = self.collection.query(
             query_embeddings=[query_embedding.tolist()],
@@ -67,5 +82,7 @@ class PolicyVectorStore:
                 "distances"
             ]
         )
+
+        print(f"Retrieved {len(results['documents'][0])} documents.")
 
         return results
