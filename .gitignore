@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# Chroma Vector Database
+data/chroma/
+
+# Generated files
+output/
+outputs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Environment files
+.env.local
+.env.*

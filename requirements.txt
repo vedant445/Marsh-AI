@@ -1,0 +1,11 @@
+streamlit
+reportlab
+python-pptx
+chromadb
+sentence-transformers
+transformers
+torch
+pypdf
+numpy
+pandas
+scikit-learn
