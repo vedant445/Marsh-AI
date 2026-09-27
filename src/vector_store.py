@@ -65,13 +65,15 @@ class PolicyVectorStore:
         print(f"Added {len(chunks)} chunks to ChromaDB.")
 
     def search(
-        self,
-        query_embedding,
-        n_results: int = 5
-    ):
+    self,
+    query_embedding,
+    n_results: int = 5
+):
 
-        print("\nSearching ChromaDB...")
-        print(f"Current Collection Count: {self.collection.count()}")
+        print("=" * 80)
+        print("VECTOR STORE")
+        print("=" * 80)
+        print("Collection count:", self.collection.count())
 
         results = self.collection.query(
             query_embeddings=[query_embedding.tolist()],
@@ -83,6 +85,6 @@ class PolicyVectorStore:
             ]
         )
 
-        print(f"Retrieved {len(results['documents'][0])} documents.")
+        print("Retrieved:", len(results["documents"][0]))
 
         return results

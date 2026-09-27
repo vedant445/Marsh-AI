@@ -145,6 +145,13 @@ class PolicyRetriever:
             query_embedding,
             n_results=candidate_count
         )
+        print("=" * 80)
+        print("RAW SEARCH RESULTS")
+        print("=" * 80)
+
+        print("Documents:", len(results["documents"][0]))
+        print("Metadata :", len(results["metadatas"][0]))
+        print("Distances:", len(results["distances"][0]))
 
         documents = results["documents"][0]
         metadatas = results["metadatas"][0]
@@ -259,7 +266,17 @@ class PolicyRetriever:
                 "confidence": confidence
 
             })
+        print("=" * 80)
+        print("RERANKED RESULTS")
+        print("=" * 80)
 
+        for item in reranked[:10]:
+            print(
+                f"{item['policy_name']}"
+                f" | score={item['rerank_score']}"
+                f" | similarity={item['similarity']}"
+                f" | confidence={item['confidence']}"
+            )
         reranked.sort(
             key=lambda x: x["rerank_score"],
             reverse=True
